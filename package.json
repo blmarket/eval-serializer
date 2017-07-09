@@ -1,0 +1,20 @@
+{
+  "name": "eval-serializer",
+  "version": "0.1.0",
+  "description": "Easy to write serializer",
+  "main": "lib/deco.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "serializer"
+  ],
+  "author": "Jeong, Heon",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^20.0.2",
+    "jest": "^20.0.4",
+    "typescript": "^2.4.1"
+  }
+}
