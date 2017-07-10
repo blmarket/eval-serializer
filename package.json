@@ -1,8 +1,9 @@
 {
   "name": "eval-serializer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Easy to write serializer",
-  "main": "lib/deco.js",
+  "main": "./lib/deco.js",
+  "types": "./lib/deco.d.ts",
   "scripts": {
     "test": "jest"
   },
