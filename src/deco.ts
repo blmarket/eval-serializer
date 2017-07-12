@@ -10,8 +10,7 @@ function toString(obj: any, indent: number = 0, inline: boolean = false) {
         if (obj.length == 0) {
             return " ".repeat(inline ? 0 : indent) + "[]";
         }
-        return " ".repeat(inline ? 0 : indent) + "[\n" + obj.map(jt => toString(jt, indent + 2)).join(",\n") + "\n" +
-            " ".repeat(inline ? 0 : indent) + "]";
+        return " ".repeat(inline ? 0 : indent) + "[\n" + obj.map(jt => toString(jt, indent + 2)).join(",\n") + " ]";
     }
 
     const Class = Object.getPrototypeOf(obj);
