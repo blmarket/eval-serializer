@@ -1,7 +1,7 @@
 const TOSTR_KEY = "__EVAL_SERIALIZER_TOSTR_KEY__";
 const UNAPPLY_KEY = "__EVAL_SERIALIZER_UNAPPLY_KEY__";
 
-function toString(obj: any, indent: number = 0, inline: boolean = false) {
+function toString(obj: any, indent: number = 0, inline: boolean = false): string {
     if (obj === null) {
         return "null";
     }
@@ -22,7 +22,7 @@ function toString(obj: any, indent: number = 0, inline: boolean = false) {
     return toStr.call(obj, indent, inline);
 }
 
-function decorate<T>(Class: Function, unapply: (T) => any[]) {
+function decorate<T>(Class: Function, unapply: (T) => any[]): Function {
     Class.prototype[UNAPPLY_KEY] = unapply;
     Class.prototype[TOSTR_KEY] = function (indent, inline = false) {
         return " ".repeat(inline ? 0 : indent) + `new ${Class.name}(${unapply(this).map(it => {

@@ -5,6 +5,7 @@
   "main": "./lib/deco.js",
   "types": "./lib/deco.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "jest"
   },
   "keywords": [
