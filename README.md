@@ -23,7 +23,8 @@ serialization.
 ```
 import * as ES from "eval-serializer";
 class Foo { ... };
-ES.decorate(Foo, function(obj) => [ obj.param1, obj.param2 ] ); // constructor arguments which can recreate same object
+// Expect instance of `Foo` can be created via `new Foo(param1, param2)`
+ES.decorate(Foo, (obj) => [ obj.param1, obj.param2 ] );
 console.log(ES.toString(new Foo("p1", "p2")));
 ```
 
@@ -31,3 +32,12 @@ console.log(ES.toString(new Foo("p1", "p2")));
 const serialized = '...';
 const obj = new Function('Foo', serialized)(Foo); // generates original object
 ```
+
+### TODO
+
+#### Type helpers
+
+I'd like to see IDE to suggest type informations.
+
+Example: Serializer generates `.ts` file with type reference link, 
+and provide `.d.ts` file which contains type informations.
