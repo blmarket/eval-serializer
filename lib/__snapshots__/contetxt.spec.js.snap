@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ES module Deserializes string 1`] = `
+WikiLink {
+  "children": Array [],
+  "color": "#e3f2fd",
+  "label": "wiki",
+  "type": "Link",
+  "url": "wikiurl",
+}
+`;
+
+exports[`ES module Serializes sample object well enough 1`] = `
+"new Row(\\"row:label\\", [
+  new WikiLink(\\"wiki\\", \\"wikiurl\\", []),
+  new PlainLink(\\"link\\", \\"linkurl\\", []),
+  new Link(\\"link\\", \\"linkurl\\", \\"#dddddd\\", []) ])"
+`;
