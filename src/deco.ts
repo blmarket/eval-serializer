@@ -5,7 +5,7 @@ function toString(obj: any, indent: number = 0, inline: boolean = false): string
     if (obj === null) {
         return "null";
     }
-    
+
     if (Array.isArray(obj)) {
         if (obj.length == 0) {
             return " ".repeat(inline ? 0 : indent) + "[]";
@@ -23,6 +23,7 @@ function toString(obj: any, indent: number = 0, inline: boolean = false): string
 }
 
 function decorate<T>(Class: Function, unapply: (T) => any[]): Function {
+    console.warn("Decoration API is no longer supported, use context api instead");
     Class.prototype[UNAPPLY_KEY] = unapply;
     Class.prototype[TOSTR_KEY] = function (indent, inline = false) {
         return " ".repeat(inline ? 0 : indent) + `new ${Class.name}(${unapply(this).map(it => {

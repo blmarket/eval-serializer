@@ -1,8 +1,12 @@
+import { VM } from 'vm2';
+
 class Context {
     private classMap: { [className: string]: [any, ((any) => any[])] } = {};
+    private vm = new VM();
 
     add<T>(Class: Function, unapply: (T) => any[]) {
         this.classMap[Class.name] = [Class, unapply];
+        this.vm.freeze(Class, Class.name);
     }
 
     serialize(obj: any, indent: number = 0, inline: boolean = false) {
@@ -31,14 +35,7 @@ class Context {
     }
 
     deserialize(str: string): any {
-        const classNames = [];
-        const classes = [];
-        for (const [key, value] of Object.entries(this.classMap)) {
-            classNames.push(key);
-            classes.push(value[0]);
-        }
-        classNames.push(`return ${str}`);
-        return new Function(...classNames)(...classes);
+        return this.vm.run(str);
     }
 }
 
