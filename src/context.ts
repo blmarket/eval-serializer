@@ -1,9 +1,9 @@
 import { VM } from 'vm2';
 
-interface ClassType<T, ArgsT extends unknown[]> extends Function {
+interface ClassType<T, ArgsT extends any[]> extends Function {
     new(...args: ArgsT): T;
 }
-type ClassMapEntry<T, ArgsT extends unknown[], C = ClassType<T, ArgsT>> = [C, (objectToUnapply: T) => ArgsT];
+type ClassMapEntry<T, ArgsT extends any[], C = ClassType<T, ArgsT>> = [C, (objectToUnapply: T) => ArgsT];
 
 class Context {
     private classMap: { [className: string]: ClassMapEntry<unknown, unknown[]> } = {};

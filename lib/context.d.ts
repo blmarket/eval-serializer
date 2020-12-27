@@ -4,8 +4,9 @@ interface ClassType<T, ArgsT extends any[]> extends Function {
 declare class Context {
     private classMap;
     private vm;
-    add<T, ArgsT extends any[]>(Class: ClassType<T, ArgsT>, unapply: (instance: T) => ArgsT): void;
+    add<T, ArgsT extends unknown[]>(Class: ClassType<T, ArgsT>, unapply: (instance: T) => ArgsT): void;
     serialize(obj: unknown, indent?: number, inline?: boolean): string;
-    deserialize(str: string): unknown;
+    deserialize(str: string): any;
 }
+export { ClassType };
 export default Context;
