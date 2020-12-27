@@ -39,9 +39,10 @@ class Context {
         }
     }
 
-    deserialize(str: string): unknown {
+    deserialize(str: string): any {
         return this.vm.run(str);
     }
 }
 
+export {ClassType};
 export default Context;

@@ -1,2 +1,2 @@
 export * from "./deco";
-export {default as Context} from "./context";
+export { ClassType, default as Context } from "./context";
