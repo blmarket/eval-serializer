@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Elem {
 }
 
@@ -6,7 +7,7 @@ class Row implements Elem {
     label: string;
     children: Elem[];
 
-    constructor(label, children = []) {
+    constructor(label: string, children: Elem[] = []) {
         this.type = "Row";
         this.label = label;
         this.children = children;
@@ -20,7 +21,7 @@ class Link implements Elem {
     color: string;
     children: Elem[];
 
-    constructor(label, url, color, children = []) {
+    constructor(label: string, url: string, color: string, children: Elem[] = []) {
         this.type = "Link";
         this.label = label;
         this.url = url;
@@ -30,7 +31,7 @@ class Link implements Elem {
 }
 
 class PlainLink extends Link {
-    constructor(label, url, children = []) {
+    constructor(label: string, url: string, children: Elem[] = []) {
         super(label, url, '#ffffff', children);
     }
 }
@@ -38,9 +39,9 @@ class PlainLink extends Link {
 const WIKI_COLOR = "#e3f2fd";
 
 class WikiLink extends Link {
-    constructor(label, url, children = []) {
+    constructor(label: string, url: string, children: Elem[] = []) {
         super(label, url, WIKI_COLOR, children);
     }
 }
 
-export {Row, WikiLink, PlainLink, Link};
+export { Row, WikiLink, PlainLink, Link };

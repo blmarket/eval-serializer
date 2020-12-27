@@ -1,15 +1,20 @@
 import { VM } from 'vm2';
 
+interface ClassType<T, ArgsT extends unknown[]> extends Function {
+    new(...args: ArgsT): T;
+}
+type ClassMapEntry<T, ArgsT extends unknown[], C = ClassType<T, ArgsT>> = [C, (objectToUnapply: T) => ArgsT];
+
 class Context {
-    private classMap: { [className: string]: [any, ((any) => any[])] } = {};
+    private classMap: { [className: string]: ClassMapEntry<unknown, unknown[]> } = {};
     private vm = new VM();
 
-    add<T>(Class: Function, unapply: (T) => any[]) {
+    add<T, ArgsT extends unknown[]>(Class: ClassType<T, ArgsT>, unapply: (instance: T) => ArgsT): void {
         this.classMap[Class.name] = [Class, unapply];
         this.vm.freeze(Class, Class.name);
     }
 
-    serialize(obj: any, indent: number = 0, inline: boolean = false) {
+    serialize(obj: unknown, indent = 0, inline = false): string {
         if (obj == null) {
             return "null";
         }
@@ -34,7 +39,7 @@ class Context {
         }
     }
 
-    deserialize(str: string): any {
+    deserialize(str: string): unknown {
         return this.vm.run(str);
     }
 }

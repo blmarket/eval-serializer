@@ -4,7 +4,7 @@ declare class Row implements Elem {
     type: string;
     label: string;
     children: Elem[];
-    constructor(label: any, children?: any[]);
+    constructor(label: string, children?: Elem[]);
 }
 declare class Link implements Elem {
     type: string;
@@ -12,12 +12,12 @@ declare class Link implements Elem {
     url: string;
     color: string;
     children: Elem[];
-    constructor(label: any, url: any, color: any, children?: any[]);
+    constructor(label: string, url: string, color: string, children?: Elem[]);
 }
 declare class PlainLink extends Link {
-    constructor(label: any, url: any, children?: any[]);
+    constructor(label: string, url: string, children?: Elem[]);
 }
 declare class WikiLink extends Link {
-    constructor(label: any, url: any, children?: any[]);
+    constructor(label: string, url: string, children?: Elem[]);
 }
 export { Row, WikiLink, PlainLink, Link };

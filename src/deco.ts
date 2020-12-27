@@ -1,7 +1,8 @@
+/* eslint-disable */
 const TOSTR_KEY = "__EVAL_SERIALIZER_TOSTR_KEY__";
 const UNAPPLY_KEY = "__EVAL_SERIALIZER_UNAPPLY_KEY__";
 
-function toString(obj: any, indent: number = 0, inline: boolean = false): string {
+function toString(obj: any, indent = 0, inline = false): string {
     if (obj === null) {
         return "null";
     }
